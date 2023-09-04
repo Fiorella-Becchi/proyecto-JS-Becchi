@@ -37,25 +37,58 @@ else if (precioTotalviaje >= 500) {
 
 }
 
-//array
-const destinos = ["Argentina", "Francia", "Indonesia", "Portugal"];
-const destinoElegido = prompt("Elige un destino entre: " + destinos.join(", ")); 
-
 
 //objeto
 class Viaje {
-    constructor ( tematica,tiempo, epoca){
+    constructor(tematica, tiempo, epoca) {
         this.tematica = tematica;
         this.tiempo = tiempo;
         this.epoca = epoca;
-        this.info = `Este viaje tiene como ${this.tematica}, durante ${this.tiempo}, en la ${this.epoca}`;
+        this.info = `Este viaje tiene como actividad ${this.tematica}, durante ${this.tiempo}, en ${this.epoca}`;
     }
 }
 
-let destinoArgentina = new Viaje (comidas, "14 dias", primavera);
-let destinoPortugal = new Viaje (calles,"20 dias", invierno);
-let destinoIndonesia = new Viaje (playas, "1 mes", verano);
-let destinoFrancia = new Viaje (museos, "10 dias", otoño);
+
+let destinoArgentina = new Viaje("comidas", "14 dias", "primavera");
+let destinoPortugal = new Viaje("calles", "20 dias", "invierno");
+let destinoIndonesia = new Viaje("playas", "1 mes", "verano");
+let destinoFrancia = new Viaje("museos", "10 dias", "otoño");
+
+const lugar = "calle";
+const estacion = "primavera";
+const dias = "20 dias";
+
+//array
+const destinos = ["Argentina", "Francia", "Indonesia", "Portugal"];
+const destinoElegido = prompt("Elige un destino entre: " + destinos.join(", "));
+const destinoEncontrado = destinos.find(d => d.toLocaleLowerCase() === destinoElegido.toLocaleLowerCase());
+console.log(destinoEncontrado);
+alert(`Vas a viajar a ${destinoEncontrado}`);
+
+if (destinoEncontrado) {
+    switch (destinoEncontrado.toLocaleLowerCase()) {
+        case "argentina":
+            mostrarInfoViaje(destinoArgentina);
+            break;
+        case "francia":
+            mostrarInfoViaje(destinoFrancia);
+            break;
+        case "indonesia":
+            mostrarInfoViaje(destinoIndonesia);
+            break;
+        case "portugal":
+            mostrarInfoViaje(destinoPortugal);
+            break;
+        default:
+            alert("Destino no encontrado en la lista.");
+    }
+} else {
+    alert("Destino no válido.");
+}
+
+function mostrarInfoViaje(viaje) {
+    alert(`Información del viaje:\n${viaje.info}`);
+}
 
 
 
