@@ -46,6 +46,9 @@ class Viaje {
         this.epoca = epoca;
         this.info = `Este viaje tiene como actividad ${this.tematica}, durante ${this.tiempo}, en ${this.epoca}`;
     }
+    verInformacion = ()=>{
+        document.write(this.info)
+    }
 }
 
 
