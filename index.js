@@ -46,11 +46,11 @@ class Viaje {
         this.epoca = epoca;
         this.info = `Este viaje tiene como actividad ${this.tematica}, durante ${this.tiempo}, en ${this.epoca}`;
     }
-    verInformacion = ()=>{
+    verInformacion = () => {
         document.write(this.info)
     }
 }
-
+ 
 
 let destinoArgentina = new Viaje("comidas", "14 dias", "primavera");
 let destinoPortugal = new Viaje("calles", "20 dias", "invierno");
@@ -60,6 +60,11 @@ let destinoFrancia = new Viaje("museos", "10 dias", "otoño");
 const lugar = "calle";
 const estacion = "primavera";
 const dias = "20 dias";
+
+destinoArgentina.verInformacion();
+destinoFrancia.verInformacion();
+destinoIndonesia.verInformacion();
+destinoPortugal.verInformacion();
 
 //array
 const destinos = ["Argentina", "Francia", "Indonesia", "Portugal"];
