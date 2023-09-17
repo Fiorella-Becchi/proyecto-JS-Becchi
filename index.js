@@ -1,4 +1,4 @@
-//Funcion y prompt usuario
+/*//Funcion y prompt usuario
 function saludar() {
     console.log("Hola viajeros!");
 }
@@ -12,7 +12,8 @@ else {
 
 saludar();
 
-//Ciclo---- Podría hacerse una función que permita hacer los ciclos while de validación de la línea 18 y 23 para no repetir código., pero la función saludar funciona bien
+//Ciclo
+// Podría hacerse una función que permita hacer los ciclos while de validación de la línea 18 y 23 para no repetir código., pero la función saludar funciona bien
 
 let precioHotel = parseFloat(prompt("Ingresa el precio del hotel:"));
 while (isNaN(precioHotel) || precioHotel < 0) {
@@ -36,7 +37,7 @@ else if (precioTotalviaje >= 500) {
     alert("Ahora si vas a viajar");
 
 }
-
+*/
 
 //objeto
 class Viaje {
@@ -50,7 +51,7 @@ class Viaje {
         document.write(this.info)
     }
 }
- 
+
 
 let destinoArgentina = new Viaje("comidas", "14 dias", "primavera");
 let destinoPortugal = new Viaje("calles", "20 dias", "invierno");
@@ -62,9 +63,10 @@ const estacion = "primavera";
 const dias = "20 dias";
 
 destinoArgentina.verInformacion();
-destinoFrancia.verInformacion();
-destinoIndonesia.verInformacion();
 destinoPortugal.verInformacion();
+destinoIndonesia.verInformacion();
+destinoFrancia.verInformacion();
+
 
 //array
 const destinos = ["Argentina", "Francia", "Indonesia", "Portugal"];
@@ -99,5 +101,24 @@ function mostrarInfoViaje(viaje) {
 }
 
 
+// Evento: botón para seleccionar el destino
+const seleccionarDestinoBtn = document.getElementById("seleccionarDestinoBtn");
+seleccionarDestinoBtn.addEventListener("click", () => {
+    const destinoElegido = prompt("Elige un destino entre: " + destinos.join(", "));
+    const destinoEncontrado = destinos.find(d => d.toLocaleLowerCase() === destinoElegido?.toLocaleLowerCase());
+
+    if (destinoEncontrado) {
+        localStorage.setItem("destinoElegido", destinoEncontrado);
+        alert(`Has seleccionado ${destinoEncontrado}.`);
+    } else {
+        alert("Destino no válido.");
+    }
+});
+
+// Obtener y mostrar el destino seleccionado
+const destinoGuardado = localStorage.getItem("destinoElegido");
+if (destinoGuardado) {
+    alert(`Has elegido viajar a ${destinoGuardado}.`);
+}
 
 
