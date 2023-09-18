@@ -41,7 +41,8 @@ else if (precioTotalviaje >= 500) {
 
 //objeto
 class Viaje {
-    constructor(tematica, tiempo, epoca) {
+    constructor(nombre, tematica, tiempo, epoca) {
+        this.nombre = nombre;
         this.tematica = tematica;
         this.tiempo = tiempo;
         this.epoca = epoca;
@@ -53,10 +54,12 @@ class Viaje {
 }
 
 
-let destinoArgentina = new Viaje("comidas", "14 dias", "primavera");
-let destinoPortugal = new Viaje("calles", "20 dias", "invierno");
-let destinoIndonesia = new Viaje("playas", "1 mes", "verano");
-let destinoFrancia = new Viaje("museos", "10 dias", "otoño");
+let destinoArgentina = new Viaje("Argentina", "comidas", "14 dias", "primavera");
+let destinoPortugal = new Viaje("Portugal", "calles", "20 dias", "invierno");
+let destinoIndonesia = new Viaje("Indonesia", "playas", "1 mes", "verano");
+let destinoFrancia = new Viaje("Francia", "museos", "10 dias", "otoño");
+
+const paisesDestino = [destinoArgentina, destinoPortugal, destinoIndonesia, destinoFrancia];
 
 const lugar = "calle";
 const estacion = "primavera";
@@ -122,3 +125,41 @@ if (destinoGuardado) {
 }
 
 
+function mostrarDestinos() {
+    const contenedorDestinos = document.getElementById('contenedorDestinos');
+    paisesDestino.forEach(pais => {
+        const card = document.createElement('div');
+        card.setAttribute('class', 'cardDestino')
+        card.innerHTML = `<p>${pais.nombre}</p>
+                          <p>${pais.info}</p>
+                          <button id="${pais.nombre}">Elegir Destino </button>
+                          `
+        contenedorDestinos.appendChild(card);
+    })
+}
+mostrarDestinos();
+
+
+/*json
+const destinosInfo = {
+    "argentina": {
+        tematica: "comidas",
+        tiempo: "14 dias",
+        epoca: "primavera"
+    },
+    "portugal": {
+        tematica: "calles",
+        tiempo: "20 dias",
+        epoca: "invierno"
+    },
+    "francia": {
+        tematica: "museos",
+        tiempo: "10 dias",
+        epoca: "otoño"
+    },
+    "indonesia": {
+        tematica: "playas",
+        tiempo: "1 mes",
+        epoca: "verano"
+    }
+}; */
