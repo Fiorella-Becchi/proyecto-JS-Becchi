@@ -30,6 +30,16 @@ document.querySelector('form').addEventListener('submit', async function (e) {
     const mensaje = mensajeInput.value;
     const suscripcion = suscripcionCheckbox.checked;
 
+    // Alerta de error si los campos están vacíos
+    if (!nombre || !email || !mensaje) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Por favor, complete todos los campos del formulario',
+            icon: 'error',
+        });
+        return;
+    }
+
     // Opción de suscripción seleccionada a datosAdicionales
     datosAdicionales.push(suscripcion ? 'Usuario suscrito' : 'Usuario no suscrito');
 
