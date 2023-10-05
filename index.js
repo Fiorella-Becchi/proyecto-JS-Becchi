@@ -75,3 +75,24 @@ document.querySelector('form').addEventListener('submit', async function (e) {
     }
 });
 
+// API con Console Maps Platform de Google
+
+function inicializarMapa() {
+    // Coordenadas para Ibiza
+    const coordenadasIbiza = { lat: 38.902847599999994, lng: 1.4090239999999998 };
+
+    // Opciones del mapa
+    const opcionesMapa = {
+        center: coordenadasIbiza,
+        zoom: 15,
+    };
+
+    const mapa = new google.maps.Map(document.getElementById('mapa'), opcionesMapa);
+
+    // Marcador para la ubicación
+    const marcador = new google.maps.Marker({
+        position: coordenadasIbiza,
+        map: mapa,
+        title: 'Ibiza, España',
+    });
+}
