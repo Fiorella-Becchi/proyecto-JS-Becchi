@@ -1,165 +1,67 @@
-/*//Funcion y prompt usuario
-function saludar() {
-    console.log("Hola viajeros!");
-}
-let nombreUsuario = prompt("¿Cuál es tu nombre?");
-if (nombreUsuario == "") {
-    alert("No ingresaste el nombre de usuario");
-}
-else {
-    alert("Nombre de usuario ingresado: " + nombreUsuario);
-}
+const datosAdicionales = [];
+const formulario = document.getElementById('miFormulario');
 
-saludar();
+// Elementos del formulario
+const nombreInput = document.getElementById('nombre');
+const emailInput = document.getElementById('email');
+const mensajeInput = document.getElementById('mensaje');
+const suscripcionCheckbox = document.getElementById('suscripcion');
 
-//Ciclo
-// Podría hacerse una función que permita hacer los ciclos while de validación de la línea 18 y 23 para no repetir código., pero la función saludar funciona bien
+// Función para guardar los datos en localStorage como una promesa
 
-let precioHotel = parseFloat(prompt("Ingresa el precio del hotel:"));
-while (isNaN(precioHotel) || precioHotel < 0) {
-    alert("Precio de hotel no válido.");
-    precioHotel = parseFloat(prompt("Ingresa el precio del hotel:"));
-}
-let precioVuelo = parseFloat(prompt("Ingresa el precio del vuelo:"));
-while (isNaN(precioVuelo) || precioVuelo < 0) {
-    alert("Precio de vuelo no válido.");
-    precioVuelo = parseFloat(prompt("Ingresa el precio del vuelo:"));
+function guardarDatosEnLocalStorage(formDataString) {
+    return new Promise((resolve, reject) => {
+        try {
+            localStorage.setItem('formularioData', formDataString);
+            resolve('Datos guardados en localStorage con éxito');
+        } catch (error) {
+            reject('Error al guardar los datos en localStorage');
+        }
+    });
 }
 
-//Calculo
+// Evento de envío de formulario
+document.querySelector('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-const precioTotalviaje = precioHotel + precioVuelo;
-console.log(`El precio total de tu viaje es: ${precioTotalviaje} pesos.`);
-if (precioTotalviaje < 500) {
-    alert("Ese precio no existe");
-}
-else if (precioTotalviaje >= 500) {
-    alert("Ahora si vas a viajar");
+    // Valores ingresados por el usuario
+    const nombre = nombreInput.value;
+    const email = emailInput.value;
+    const mensaje = mensajeInput.value;
+    const suscripcion = suscripcionCheckbox.checked;
 
-}
-*/
+    // Opción de suscripción seleccionada a datosAdicionales
+    datosAdicionales.push(suscripcion ? 'Usuario suscrito' : 'Usuario no suscrito');
 
-//objeto
-class Viaje {
-    constructor(nombre, tematica, tiempo, epoca) {
-        this.nombre = nombre;
-        this.tematica = tematica;
-        this.tiempo = tiempo;
-        this.epoca = epoca;
-        this.info = `Este viaje tiene como actividad ${this.tematica}, durante ${this.tiempo}, en ${this.epoca}`;
-    }
-    verInformacion = () => {
-        document.write(this.info)
-    }
-}
+    // Objeto JSON con los datos del formulario
+    const formData = {
+        nombre,
+        email,
+        mensaje,
+        suscripcion,
+    };
 
+    // Convertir el objeto JSON a una cadena
+    const formDataString = JSON.stringify(formData);
 
-let destinoArgentina = new Viaje("Argentina", "comidas", "14 dias", "primavera");
-let destinoPortugal = new Viaje("Portugal", "calles", "20 dias", "invierno");
-let destinoIndonesia = new Viaje("Indonesia", "playas", "1 mes", "verano");
-let destinoFrancia = new Viaje("Francia", "museos", "10 dias", "otoño");
+    // Guardar los datos en localStorage de forma asincrónica
+    try {
+        const resultado = await guardarDatosEnLocalStorage(formDataString);
+        console.log(resultado);
 
-const paisesDestino = [destinoArgentina, destinoPortugal, destinoIndonesia, destinoFrancia];
+        // Mostrar un alert con libreria
+        Swal.fire({
+            title: 'Listo!',
+            text: 'Vida Nomade',
+            imageUrl: '../img/avionpapel.png',
+            imageWidth: 200,
+            imageHeight: 200,
+            imageAlt: 'Animacion avion',
+        });
 
-const lugar = "calle";
-const estacion = "primavera";
-const dias = "20 dias";
-
-destinoArgentina.verInformacion();
-destinoPortugal.verInformacion();
-destinoIndonesia.verInformacion();
-destinoFrancia.verInformacion();
-
-
-//array
-const destinos = ["Argentina", "Francia", "Indonesia", "Portugal"];
-const destinoElegido = prompt("Elige un destino entre: " + destinos.join(", "));
-const destinoEncontrado = destinos.find(d => d.toLocaleLowerCase() === destinoElegido.toLocaleLowerCase());
-console.log(destinoEncontrado);
-alert(`Vas a viajar a ${destinoEncontrado}`);
-
-if (destinoEncontrado) {
-    switch (destinoEncontrado.toLocaleLowerCase()) {
-        case "argentina":
-            mostrarInfoViaje(destinoArgentina);
-            break;
-        case "francia":
-            mostrarInfoViaje(destinoFrancia);
-            break;
-        case "indonesia":
-            mostrarInfoViaje(destinoIndonesia);
-            break;
-        case "portugal":
-            mostrarInfoViaje(destinoPortugal);
-            break;
-        default:
-            alert("Destino no encontrado en la lista.");
-    }
-} else {
-    alert("Destino no válido.");
-}
-
-function mostrarInfoViaje(viaje) {
-    alert(`Información del viaje:\n${viaje.info}`);
-}
-
-
-// Evento: botón para seleccionar el destino
-const seleccionarDestinoBtn = document.getElementById("seleccionarDestinoBtn");
-seleccionarDestinoBtn.addEventListener("click", () => {
-    const destinoElegido = prompt("Elige un destino entre: " + destinos.join(", "));
-    const destinoEncontrado = destinos.find(d => d.toLocaleLowerCase() === destinoElegido?.toLocaleLowerCase());
-
-    if (destinoEncontrado) {
-        localStorage.setItem("destinoElegido", destinoEncontrado);
-        alert(`Has seleccionado ${destinoEncontrado}.`);
-    } else {
-        alert("Destino no válido.");
+        console.log(localStorage.getItem('formularioData'));
+    } catch (error) {
+        console.error(error);
     }
 });
 
-// Obtener y mostrar el destino seleccionado
-const destinoGuardado = localStorage.getItem("destinoElegido");
-if (destinoGuardado) {
-    alert(`Has elegido viajar a ${destinoGuardado}.`);
-}
-
-
-function mostrarDestinos() {
-    const contenedorDestinos = document.getElementById('contenedorDestinos');
-    paisesDestino.forEach(pais => {
-        const card = document.createElement('div');
-        card.setAttribute('class', 'cardDestino')
-        card.innerHTML = `<p>${pais.nombre}</p>
-                          <p>${pais.info}</p>
-                          <button id="${pais.nombre}">Elegir Destino </button>
-                          `
-        contenedorDestinos.appendChild(card);
-    })
-}
-mostrarDestinos();
-
-
-/*json
-const destinosInfo = {
-    "argentina": {
-        tematica: "comidas",
-        tiempo: "14 dias",
-        epoca: "primavera"
-    },
-    "portugal": {
-        tematica: "calles",
-        tiempo: "20 dias",
-        epoca: "invierno"
-    },
-    "francia": {
-        tematica: "museos",
-        tiempo: "10 dias",
-        epoca: "otoño"
-    },
-    "indonesia": {
-        tematica: "playas",
-        tiempo: "1 mes",
-        epoca: "verano"
-    }
-}; */

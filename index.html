@@ -12,81 +12,153 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Space+Mono&family=Ysabeau:wght@300&display=swap"
         rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <meta name="description"
         content="Información sobre experiencias personales y herramientas para armar tu propio viaje.">
-    <link rel="stylesheet" href="./css/estilos.css">
-    <link rel="short cut icon" href="./img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../img/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <title>Vida Nómade | Experiencias de viajes</title>
-
+    <title>Contacto | Vida Nómade</title>
 </head>
 
 <body>
-
-
     <header>
-
-
         <figure>
-            <img src="./img/avionpapel.png" alt="Logo Sitio" height="200" width="200">
+            <img src="../img/avionpapel.png" alt="Logo Sitio" height="200" width="200">
             <figcaption>
-                <div class="rotate_animacion">
-                    <h1> Vida Nómade </h1>
-                </div>
+                <h1> Vida Nómade </h1>
             </figcaption>
         </figure>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a href="index.html" class="navbar-brand" href="#">Inicio</a>
+                <a a href="../index.html" class="navbar-brand" href="#">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-space-around" id="navbarNavDropdown">
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="./pages/quienes-somos.html" class="nav-link" href="#">Quiénes Somos</a>
+                            <a href="./quienes-somos.html" class="nav-link" href="#">Quiénes Somos</a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a href="./pages/nuestros-viajes.html" class="nav-link" href="#">
+                            <a href="./nuestros-viajes.html" class="nav-link dropdown-toggle" href="#">
                                 Nuestros Viajes
                             </a>
+
                         </li>
 
                         <li>
-                            <a href="./pages/sugerencias-viajeras.html" class="nav-link" aria-current="page"
+                            <a href="./sugerencias-viajeras.html" class="nav-link" aria-current="page"
                                 href="#">Sugerencias Viajeras </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="./pages/contacto.html" class="nav-link" href="#">Contacto</a>
+                            <a href="./contacto.html" class="nav-link" href="#">Contacto</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
     </header>
-    <main>
-        <h2>Calculemos tu Viaje</h2>
-        <h3>Los viajes disponibles son:</h3>
-        <p>
-        <ul>
-            <li><strong>Argentina:</strong> Este viaje tiene como actividad relizar un recorridos para explorar las comidas tipicas del país, durante 14 dias, en primavera.</li>
-            <li><strong>Portugal:</strong> Este viaje tiene como actividad explorar las calles tipicas para descubrir su famosa arquitectura, durante 20 dias, en invierno.</li>
-            <li><strong>Francia:</strong> Este viaje tiene como actividad visitar los museos mas importantes del sitio, durante 10 dias, en otoño.</li>
-            <li><strong>Indonesia:</strong> Este viaje tiene como actividad disfrutar de las numerosas playas, durante 1 mes, en verano.</li>
-        </ul>
-        </p>
-        <button id="seleccionarDestinoBtn">Seleccionar Destino</button>
-        <div id= "contenedorDestinos"> </div>
+    <div class="container">
+        <main>
+
+            <section class="caja1 row">
+                <div class="animate__animated animate__bounce">
+                    <h2>Buscas ayuda con tu viaje?</h2>
+                </div>
+
+                <article>
+
+                    <p>En nuestro sitio web trabajamos con nuestras experiencias de viaje y
+                        la
+                        investigación que realizamos
+                        antes de llevar a cabo cada uno de ellos. Si estás interesado en compartir tu experiencia o
+                        tenés
+                        alguna duda sobre tu plan de viaje, puedes contactarnos a través de nuestras redes o enviándonos
+                        un
+                        mensaje</p>
+                    <div class="centrar-imagen">
+                        <img src="../img/questionsanswers.jpg" alt="Cartel de señalización con una frase">
+                    </div>
+
+                </article>
+            </section>
+
+
+
+            <section class="caja1 row">
+                <h3>Envianos tu consulta</h3>
+                <div class="container mt-4">
+
+                    <form action="">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="nombre">Ingresar nombre y apellido:</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre y Apellido">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Ingresar correo electrónico</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="mensaje">Ingrese su mensaje:</label>
+                                <textarea class="form-control" id="mensaje" rows="5"></textarea>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="suscripcion">
+                                <label class="form-check-label" for="suscripcion">¿Desea suscribirse y recibir nuestras
+                                    novedades?</label>
+                            </div>
+                            <div class="mt-3">
+                                <input type="submit" class="btn btn-color" value="Enviar">
+                                <input type="reset" class="btn btn-color" value="Limpiar">
+                            </div>
+                        </fieldset>
+                    </form>
+            </section>
+
+
+            <section class="caja1 row">
+                <h2>Nuestra Ubicación</h2>
+                <p> En este momento, nos encontramos transitando la temporada de verano en Ibiza, una de las islas
+                    Baleares de España.
+                </p>
+                <div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24839.393972466893!2d1.4090239999999998!3d38.902847599999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2ses!4v1684933720956!5m2!1ses-419!2ses"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" class="centrar-imagen"></iframe>
+                </div>
+            </section>
+    </div>
     </main>
+    </div>
+    <footer>
+        <div class="row">
+            <h4>Contacto</h4>
+
+            <ul>
+                <li><a href="https://www.facebook.com/"><i class="bi bi-facebook"></i> Facebook</a></li>
+                <li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i> Instagram</a></li>
+                <li><a href="https://twitter.com/?lang=es"><i class="bi bi-twitter"></i> Twitter</a></li>
+                <li><a href="https://www.youtube.com/"><i class="bi bi-youtube"></i> Youtube</a></li>
+            </ul>
+            <h4>Suscríbete para recibir nuestras novedades</h4>
+        </div>
+    </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>
