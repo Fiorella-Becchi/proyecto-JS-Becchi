@@ -96,3 +96,20 @@ function inicializarMapa() {
         title: 'Ibiza, España',
     });
 }
+
+// Obtén una referencia al contenedor del mapa
+const mapaContainer = document.getElementById('mapaContainer');
+
+// Obtén una referencia a los botones que permitirán ocultar o mostrar el mapa
+const ocultarMapaBtn = document.getElementById('ocultarMapa');
+const mostrarMapaBtn = document.getElementById('mostrarMapa');
+
+// Agrega un manejador de eventos para ocultar el mapa
+ocultarMapaBtn.addEventListener('click', function () {
+    mapaContainer.setAttribute('hidden', true);
+});
+
+// Agrega un manejador de eventos para mostrar el mapa
+mostrarMapaBtn.addEventListener('click', function () {
+    mapaContainer.removeAttribute('hidden');
+});
