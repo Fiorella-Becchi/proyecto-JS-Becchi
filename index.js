@@ -63,7 +63,7 @@ document.querySelector('form').addEventListener('submit', async function (e) {
         Swal.fire({
             title: 'Listo!',
             text: 'Vida Nomade',
-            imageUrl: '../img/avionpapel.png',
+            imageUrl: './img/avionpapel.png',
             imageWidth: 200,
             imageHeight: 200,
             imageAlt: 'Animacion avion',
@@ -97,19 +97,20 @@ function inicializarMapa() {
     });
 }
 
-// Obtén una referencia al contenedor del mapa
+// Hidden en el mapa
 const mapaContainer = document.getElementById('mapaContainer');
-
-// Obtén una referencia a los botones que permitirán ocultar o mostrar el mapa
 const ocultarMapaBtn = document.getElementById('ocultarMapa');
 const mostrarMapaBtn = document.getElementById('mostrarMapa');
 
-// Agrega un manejador de eventos para ocultar el mapa
 ocultarMapaBtn.addEventListener('click', function () {
     mapaContainer.setAttribute('hidden', true);
 });
 
-// Agrega un manejador de eventos para mostrar el mapa
 mostrarMapaBtn.addEventListener('click', function () {
     mapaContainer.removeAttribute('hidden');
 });
+
+
+
+//Por último, falta la carga de datos (que podía ser utilizando un fetch a una API externa) donde se carguen o descarguen datos. Esto es importante porque en el proyecto no hay estructuras de datos de ningún tipo (No hay objetos ni arrays) que es otro punto requerido. 
+
