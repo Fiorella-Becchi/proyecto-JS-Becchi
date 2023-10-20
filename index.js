@@ -54,6 +54,7 @@ document.querySelector('form').addEventListener('submit', async function (e) {
     // Convertir el objeto JSON a una cadena
     const formDataString = JSON.stringify(formData);
 
+
     // Guardar los datos en localStorage de forma asincrónica
     try {
         const resultado = await guardarDatosEnLocalStorage(formDataString);
@@ -111,6 +112,22 @@ mostrarMapaBtn.addEventListener('click', function () {
 });
 
 
+//JSONPlaceholder para obtener una lista de usuarios -ficticios- que accedieron al formulario.
 
-//Por último, falta la carga de datos (que podía ser utilizando un fetch a una API externa) donde se carguen o descarguen datos. Esto es importante porque en el proyecto no hay estructuras de datos de ningún tipo (No hay objetos ni arrays) que es otro punto requerido. 
+const url = 'https://jsonplaceholder.typicode.com/users';
+
+fetch(url)
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error al obtener los datos');
+        }
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
